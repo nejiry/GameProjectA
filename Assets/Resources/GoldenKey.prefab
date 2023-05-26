@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 851234915094956227}
   - component: {fileID: 6674591467171300852}
   - component: {fileID: 1638683764101462408}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GoldenKey
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ RectTransform:
   m_GameObject: {fileID: 2055845405941799225}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 0}
+  m_LocalScale: {x: 1.7, y: 1.7, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7945519118182463737}
@@ -108,7 +108,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00004577637, y: -0.00003051758}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -119,7 +119,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.0027771, y: 0.002563477}
+  m_Size: {x: 0.003, y: 0.003}
   m_EdgeRadius: 0
 --- !u!50 &2055845405941799220
 Rigidbody2D:
@@ -258,7 +258,7 @@ MonoBehaviour:
   beginPosition: {x: 0, y: 0, z: 0}
   MaxCount: 20
   ItemCount: 1
-  ItemVolume: 1
+  ItemVolume: 1x1
 --- !u!1 &3429547247663332626
 GameObject:
   m_ObjectHideFlags: 0

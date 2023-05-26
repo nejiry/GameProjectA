@@ -5,10 +5,14 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 
-//何をセーブするかあ
+//何をセーブするか
 
 public class Inventry : MonoBehaviour,IJsonSaveable
 {
+    //
+
+
+
     public JToken CaptureAsJToken()
     {
         int i = 0;
@@ -60,10 +64,6 @@ public class Inventry : MonoBehaviour,IJsonSaveable
                     var iteminfomation = Slot.GetComponent<SlotManager>();
                     if (iteminfomation.ItemName == "")
                     {
-                        if(obj.GetComponent<Items>().ItemVolume == 1)
-                        {
-                            obj.transform.localScale = new Vector3(2, 2, 0);
-                        }
                         var newItem = Instantiate(obj);
                         Vector3 itemPosition = Slot.position;
                         newItem.transform.position = itemPosition;
@@ -79,10 +79,6 @@ public class Inventry : MonoBehaviour,IJsonSaveable
                         newItem.transform.position = itemPosition;
                         newItem.name = ItemName;
                         newItem.GetComponent<Items>().ItemCount = inventryDict[number]["itemCount"].ToObject<int>();
-                        if (newItem.GetComponent<Items>().ItemVolume == 1)
-                        {
-                            newItem.transform.localScale = new Vector3(2, 2, 0);
-                        }
                     }
                 }
                 else if (ItemName == "")

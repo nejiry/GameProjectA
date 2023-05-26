@@ -12,12 +12,12 @@ public class Items : MonoBehaviour
     public Vector3 beginPosition;
     public int MaxCount = 20;
     public int ItemCount = 1;
-    public int ItemVolume = 1;
+    public string ItemVolume;
 
     void OnMouseDown()
     {
         beginPosition = this.transform.position;
-        //ItemSet = false;
+        Debug.Log(this);
     }
     
 
