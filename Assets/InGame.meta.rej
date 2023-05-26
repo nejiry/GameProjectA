@@ -1,0 +1,10 @@
+diff a/Assets/InGame.meta b/Assets/InGame.meta	(rejected hunks)
+@@ -0,0 +1,8 @@
++fileFormatVersion: 2
++guid: a9b1244b24035934dbf2dcff9447c926
++folderAsset: yes
++DefaultImporter:
++  externalObjects: {}
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 
