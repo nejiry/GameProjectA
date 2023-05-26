@@ -1,0 +1,97 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using UnityEngine;
+
+//âΩÇÉZÅ[ÉuÇ∑ÇÈÇ©Ç†
+
+public class Inventry : MonoBehaviour,IJsonSaveable
+{
+    public JToken CaptureAsJToken()
+    {
+        int i = 0;
+        JObject state = new JObject();
+        IDictionary<string, JToken> stateDict = state;
+        GameObject parent = GameObject.Find("InventrySlots");
+        Transform Slots = parent.GetComponentInChildren<Transform>();
+
+        foreach (Transform slot in Slots)
+        {
+            var iteminfomation = slot.GetComponent<SlotManager>();
+            
+            JObject itemState = new JObject();
+            itemState["slot"] = slot.name;
+            itemState["item"] = iteminfomation.ItemName;
+            if (iteminfomation.ItemName != "")
+            {
+                Transform Chil = slot.GetChild(0).transform;
+                itemState["itemCount"] = Chil.GetComponent<Items>().ItemCount;
+            }
+            else
+            {
+                itemState["itemCount"] = 0;
+            }
+            stateDict[i.ToString()] = itemState;
+            i++;
+        }
+        stateDict["SlotCount"] = i;
+        return state;
+    }
+
+    public void RestoreFromJToken(JToken s)
+    {
+        if (s is JObject stateObject)
+        {
+            IDictionary<string, JToken> stateDict = stateObject;
+            JToken inventryDict = new JObject();
+            inventryDict = stateDict["Inventry"];
+            int SlotCount = inventryDict["SlotCount"].ToObject<int>();
+            GameObject parent = GameObject.Find("InventrySlots");
+            for (int i = 0; i < SlotCount; i++) {
+                string number = i.ToString();
+                string SlotName = inventryDict[number]["slot"].ToObject<string>();
+                Transform Slot = parent.transform.Find(SlotName);
+
+                string ItemName = inventryDict[number]["item"].ToObject<string>();
+                if (ItemName != "") {
+                    GameObject obj = (GameObject)Resources.Load(ItemName);
+                    var iteminfomation = Slot.GetComponent<SlotManager>();
+                    if (iteminfomation.ItemName == "")
+                    {
+                        if(obj.GetComponent<Items>().ItemVolume == 1)
+                        {
+                            obj.transform.localScale = new Vector3(2, 2, 0);
+                        }
+                        var newItem = Instantiate(obj);
+                        Vector3 itemPosition = Slot.position;
+                        newItem.transform.position = itemPosition;
+                        newItem.name = ItemName;
+                        newItem.GetComponent<Items>().ItemCount = inventryDict[number]["itemCount"].ToObject<int>();
+                        
+                    }
+                    else if(iteminfomation.ItemName != "")
+                    {
+                        Slot.GetComponent<SlotManager>().SlotItemDelete();
+                        var newItem = Instantiate(obj);
+                        Vector3 itemPosition = Slot.position;
+                        newItem.transform.position = itemPosition;
+                        newItem.name = ItemName;
+                        newItem.GetComponent<Items>().ItemCount = inventryDict[number]["itemCount"].ToObject<int>();
+                        if (newItem.GetComponent<Items>().ItemVolume == 1)
+                        {
+                            newItem.transform.localScale = new Vector3(2, 2, 0);
+                        }
+                    }
+                }
+                else if (ItemName == "")
+                {
+                    Slot.GetComponent<SlotManager>().SlotItemDelete();
+                }
+            }
+        }
+        
+        
+    }
+}
