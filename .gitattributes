@@ -89,4 +89,5 @@
 *.apk filter=lfs diff=lfs merge=lfs -text
 *.scenetemplate filter=lfs diff=lfs merge=lfs -text
 
+LiberationSansSDF.asset filter=lfs diff=lfs merge=lfs -text
 LightingData.asset filter=lfs diff=lfs merge=lfs -text
