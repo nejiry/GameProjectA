@@ -201,22 +201,26 @@ public class SlotManager : MonoBehaviour
         }
         else if (parent.transform.name == "StashSlots")//横列のスロット数取得。できればなくていい
         {
-            foreach (Transform slot in Slots)
+            foreach (Transform slot in Slots)//全スロットの取得
             {
-                if (slot.name == this.transform.name)//現在地の取得
+                BottomSlotLine = (SlotsCount - 1) - 10 * (verticalSize - 1);//対象スロットがスロットの最下段からverticalSize分上にあるか
+                if (i <= BottomSlotLine)
                 {
-                    BottomSlotLine = SlotsCount - 10 * (verticalSize-1);//対象スロットがスロットの最下段からverticalSize分上にあるか
-                    if (i <= BottomSlotLine)
+                    if (slot.name == this.transform.name)//アイテムが格納されるはずのスロットを取得
                     {
-                        for (int v = 0; verticalSize > v; v++)
+                        for (int v = 0; verticalSize > v; v++)//縦方向のサイズ
                         {
-                            for (int h = 0; horizontalSize > h; h++)
+                            for (int h = 0; horizontalSize > h; h++)//横方向のサイズ
                             {
-                                TGTs.Add(parent.transform.GetChild((i + h) + (10 * v)).transform);//i+5番目のスロットを選択して送り返す
+                                TGTs.Add(parent.transform.GetChild(h + (10 * v)).transform);//i+5番目のスロットを選択して送り返す
                             }
                         }
+                        return TGTs;
                     }
-
+                }
+                else if (i > BottomSlotLine)
+                {
+                    return TGTs = null;
                 }
                 i++;
             }
