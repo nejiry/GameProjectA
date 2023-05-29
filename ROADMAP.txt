@@ -1,0 +1,92 @@
+\[JAPANESE]\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+[ UI ]
+・複数マス目のアイテムのシステム
+・金銭の管理システム
+・アイテムの値段と売値の設定、アイテムに設定するかトレーダーに設定するか
+・ショップのシステム、実装（武器、防具、食料、雑貨、医療）
+・装備のシステム
+・キャラクターステータス画面
+・タスクシステム
+・町のアップグレードシステム
+・装備重量の設定
+(レイド実装後)
+・リザルト画面
+・インゲームとリザルト、スタッシュ画面のアイテム受け渡し
+・経験値システム
+	・トレーダー解放
+	・ショップのアイテム解放
+	・クラフトレシピ解放
+	・町のアップグレード条件
+
+
+[ レイド ]
+・キャラクターの動き
+・テストマップの作製
+・スタッシュクレートのシステム
+	・中のアイテムのランダム化
+	・アイテムの分類と沸き率の設定
+	・クレートのパターン又はランダム配置
+・脱出口の設定
+・ロープ、梯子、鍵部屋などのギミック
+・空腹、渇きのシステム
+
+
+[ キャラクターステータス ]
+・攻撃力（装備依存）
+・防御力（装備依存）
+・空腹
+・水分
+・装備重量
+・移動速度
+・生命力
+・医療
+・隠密
+・クラフト
+
+
+\[ENGLISH]\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+[ UI ]
+・Multiple square item system
+・Money management system
+・Item prices and selling prices, whether they are set for items or for traders
+・Store system and implementation (weapons, armor, food, miscellaneous goods, medicine)
+・Equipment system
+・Character status screen
+・Task system
+・Town upgrade system
+・Equipment weight settings
+
+(After raid implementation)
+・Result screen
+・In-game and result/stash screen item transfer
+・Experience value system
+	・Release of traders
+	・Release of store items
+	・Craft recipes
+	・Town Upgrade Conditions
+
+
+[ Raid ]
+・Character movement
+・Creation of test maps
+・Stash crate system
+	・Randomization of items in the game
+	・Item classification and boiling rates
+	・Patterns or random placement of crates
+・Escape routes
+・Gimmicks such as ropes, ladders, key rooms, etc.
+・Hunger and thirst systems.
+
+
+[Character Status ]
+・Offensive (equipment-dependent)
+・Defense (equipment-dependent)
+・Hunger
+・Moisture
+・Equipment Weight
+・Movement speed
+・Vitality
+・Medical care
+・Covert
+・Craft

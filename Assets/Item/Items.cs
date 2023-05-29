@@ -12,12 +12,13 @@ public class Items : MonoBehaviour
     public Vector3 beginPosition;
     public int MaxCount = 20;
     public int ItemCount = 1;
-    public string ItemVolume;
+    public int VerticalItemSize;
+    public int HorizontalItemSize;
+    public bool itemTrurn = false;
 
     void OnMouseDown()
     {
         beginPosition = this.transform.position;
-        Debug.Log(this);
     }
     
 
@@ -59,11 +60,7 @@ public class Items : MonoBehaviour
                 }
             }
         }
-        if (other.transform.tag == "ItemSlot" && boxFlag == false)
-        {
-            
-        }
-        else
+        else //if (other.transform.tag == "ItemSlot")
         {
             if (boxFlag == false && ItemSet == false)
             {
@@ -74,6 +71,14 @@ public class Items : MonoBehaviour
     
     void Update()
     {
+        if (boxFlag == true && Input.GetKeyDown(KeyCode.F))
+        {
+            //親要素のスロット取得してそのスロットとこのアイテムの範囲を取得その範囲のboolを変更してから回転する
+            ResetSlotBool();
+            TurnItem();
+        }
+
+
         this.GetComponent<TextMeshProUGUI>().text = ItemCount.ToString();
         if (ItemCount <= 0)
         {
@@ -108,5 +113,39 @@ public class Items : MonoBehaviour
         slot.GetComponent<SlotManager>().storing = false;
         slot.GetComponent<SlotManager>().ItemName = "";
         Destroy(this.gameObject);
+    }
+
+    public void TurnItem()
+    {
+        int horizontalSize = HorizontalItemSize;
+        int verticalSize = VerticalItemSize;
+        if (itemTrurn == false)
+        {
+            itemTrurn = true;
+            this.transform.Rotate(0f, 0f, 90f);
+            HorizontalItemSize = verticalSize;
+            VerticalItemSize = horizontalSize;
+        }
+        else if(itemTrurn == true)
+        {
+            itemTrurn = false;
+            this.transform.Rotate(0f, 0f, -90f);
+            HorizontalItemSize = verticalSize;
+            VerticalItemSize = horizontalSize;
+        }
+    }
+
+    public void ResetSlotBool()
+    {
+        int horizontalSize = HorizontalItemSize;
+        int verticalSize = VerticalItemSize;
+        GameObject slot = this.transform.parent.gameObject;
+        List<Transform> TGTs = slot.GetComponent<SlotManager>().RelatedSlots(verticalSize, horizontalSize);
+        foreach (Transform TGT in TGTs)
+        {
+            Debug.Log("storingFalse");
+            TGT.GetComponent<SlotManager>().storing = false;
+        }
+
     }
 }

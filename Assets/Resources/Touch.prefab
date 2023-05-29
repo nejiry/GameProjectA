@@ -205,7 +205,9 @@ MonoBehaviour:
   beginPosition: {x: 0, y: 0, z: 0}
   MaxCount: 20
   ItemCount: 1
-  ItemVolume: 2x1
+  VerticalItemSize: 2
+  HorizontalItemSize: 1
+  itemTrurn: 0
 --- !u!1 &8547023413422175033
 GameObject:
   m_ObjectHideFlags: 0
