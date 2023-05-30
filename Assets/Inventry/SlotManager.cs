@@ -65,6 +65,7 @@ public class SlotManager : MonoBehaviour
                 else
                 {
                     other.GetComponent<Items>().BackPosition();
+                    Debug.Log("here");
                 }
             }
 
@@ -170,6 +171,9 @@ public class SlotManager : MonoBehaviour
         GameObject parent = this.transform.parent.gameObject;
         int SlotsCount = parent.transform.childCount;//スロットの数
         int BottomSlotLine;//このエリアはアイテムが格納されるスロットにはできない
+        int RightsideSlotLine;
+        int SlotsLine;
+        List<int> RightLimitOfSlots = new List<int>();
         Transform Slots = parent.GetComponentInChildren<Transform>();
         int i = 0;//アイテムが格納されるはずのスロットの場所
 
@@ -177,19 +181,42 @@ public class SlotManager : MonoBehaviour
         {
             foreach (Transform slot in Slots)//全スロットの取得
             {
+                //右端の処理
+                SlotsLine = SlotsCount / 5;
+                for(int l = 0; l < SlotsLine; l++)//1列ごとのスロットラインに分解
+                {
+                    RightsideSlotLine = (l + 1) * 5 - 1;//右端を指定、RightsideSlotLine - horizontalSize - 1 = nonaggressionSlot
+                        for (int rl = 0; rl < horizontalSize - 1; rl++)//右端のスロットからrlを引いてずらして処理するつもり
+                        {
+                            RightLimitOfSlots.Add(RightsideSlotLine - rl);//列の最右端まで特定できたからサイズ分スロット取得して、
+                        }
+                    if (RightLimitOfSlots.Contains(i) == true)
+                    {
+
+                    }
+                }
+
+                //最下の処理
                 BottomSlotLine = (SlotsCount - 1) - 5 * (verticalSize - 1);//対象スロットがスロットの最下段からverticalSize分上にあるか
-                if (i <= BottomSlotLine)
+                if (i <= BottomSlotLine)//アイテムが格納範囲内ならば以下の処理
                 {
                     if (slot.name == this.transform.name)//アイテムが格納されるはずのスロットを取得
                     {
-                        for (int v = 0; verticalSize > v; v++)//縦方向のサイズ
+                        if (RightLimitOfSlots.Contains(i) == false)
                         {
-                            for (int h = 0; horizontalSize > h; h++)//横方向のサイズ
+                            for (int v = 0; verticalSize > v; v++)//縦方向のサイズ
                             {
-                                TGTs.Add(parent.transform.GetChild(h + (5 * v)).transform);//i+5番目のスロットを選択して送り返す
+                                for (int h = 0; horizontalSize > h; h++)//横方向のサイズ
+                                {
+                                    TGTs.Add(parent.transform.GetChild(h + (5 * v)).transform);//i+5番目のスロットを選択して送り返す
+                                }
                             }
+                            return TGTs;
                         }
-                        return TGTs;
+                        else if (RightLimitOfSlots.Contains(i) == true)
+                        {
+                            return TGTs = null;
+                        }
                     }
                 }
                 else if (i > BottomSlotLine)

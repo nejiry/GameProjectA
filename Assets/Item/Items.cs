@@ -10,15 +10,17 @@ public class Items : MonoBehaviour
     public bool ItemCounted = false;
     public bool trigWorking = false;
     public Vector3 beginPosition;
+    public bool beginItemTurn;
     public int MaxCount = 20;
     public int ItemCount = 1;
     public int VerticalItemSize;
     public int HorizontalItemSize;
-    public bool itemTrurn = false;
+    public bool itemTurn = false;
 
     void OnMouseDown()
     {
         beginPosition = this.transform.position;
+        beginItemTurn = itemTurn;
     }
     
 
@@ -105,6 +107,11 @@ public class Items : MonoBehaviour
     public void BackPosition()
     {
         this.transform.position = beginPosition;
+        if (itemTurn != beginItemTurn)
+        {
+            TurnItem();
+        }
+        
     }
 
     public void DestroyItem()
@@ -119,16 +126,16 @@ public class Items : MonoBehaviour
     {
         int horizontalSize = HorizontalItemSize;
         int verticalSize = VerticalItemSize;
-        if (itemTrurn == false)
+        if (itemTurn == false)
         {
-            itemTrurn = true;
+            itemTurn = true;
             this.transform.Rotate(0f, 0f, 90f);
             HorizontalItemSize = verticalSize;
             VerticalItemSize = horizontalSize;
         }
-        else if(itemTrurn == true)
+        else if(itemTurn == true)
         {
-            itemTrurn = false;
+            itemTurn = false;
             this.transform.Rotate(0f, 0f, -90f);
             HorizontalItemSize = verticalSize;
             VerticalItemSize = horizontalSize;
