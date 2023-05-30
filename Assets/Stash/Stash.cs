@@ -9,6 +9,7 @@ using UnityEngine;
 
 public class Stash : MonoBehaviour, IJsonSaveable
 {
+
     public JToken CaptureAsJToken()
     {
         int i = 0;

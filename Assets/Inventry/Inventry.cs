@@ -9,9 +9,6 @@ using UnityEngine;
 
 public class Inventry : MonoBehaviour,IJsonSaveable
 {
-    //
-
-
 
     public JToken CaptureAsJToken()
     {
