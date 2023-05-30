@@ -2986,7 +2986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f796eaa19415864eb2805a3c8df5e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalSlotsCount: 5
+  HorizontalSlotsCount: 5
 --- !u!1001 &625729739
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4498,7 +4498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f796eaa19415864eb2805a3c8df5e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalSlotsCount: 2
+  HorizontalSlotsCount: 2
 --- !u!224 &935656501 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7485638112825438021, guid: d7a0c6e1646ccbe438bd4140a8e7e58e, type: 3}
@@ -5112,7 +5112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f796eaa19415864eb2805a3c8df5e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalSlotsCount: 3
+  HorizontalSlotsCount: 3
 --- !u!1 &993859106
 GameObject:
   m_ObjectHideFlags: 0
@@ -5166,7 +5166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f796eaa19415864eb2805a3c8df5e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalSlotsCount: 2
+  HorizontalSlotsCount: 2
 --- !u!224 &1000255945 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7485638112825438021, guid: d7a0c6e1646ccbe438bd4140a8e7e58e, type: 3}
@@ -6025,7 +6025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f796eaa19415864eb2805a3c8df5e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalSlotsCount: 3
+  HorizontalSlotsCount: 3
 --- !u!224 &1241045708 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7485638112825438021, guid: d7a0c6e1646ccbe438bd4140a8e7e58e, type: 3}
@@ -8317,7 +8317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f796eaa19415864eb2805a3c8df5e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalSlotsCount: 2
+  HorizontalSlotsCount: 2
 --- !u!1001 &1953807126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9144,7 +9144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f796eaa19415864eb2805a3c8df5e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalSlotsCount: 10
+  HorizontalSlotsCount: 10
 --- !u!1001 &2098255704
 PrefabInstance:
   m_ObjectHideFlags: 0

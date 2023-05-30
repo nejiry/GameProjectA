@@ -168,7 +168,7 @@ public class SlotManager : MonoBehaviour
         GameObject parent = this.transform.parent.gameObject;
         int horizontalSlotsCount = parent.GetComponent<SlotsBundler>().HorizontalSlotsCount;
         int SlotsCount = parent.transform.childCount;//スロットの数
-        int BottomSlotLine = (SlotsCount -1) -horizontalSlotsCount * (verticalSize - 1);//このエリアはアイテムが格納されるスロットにはできない
+        int BottomSlotLine = (SlotsCount -1) - horizontalSlotsCount * (verticalSize - 1);//このエリアはアイテムが格納されるスロットにはできない
         int RightsideSlotLine;
         int SlotsLine = SlotsCount / horizontalSlotsCount;
         List<int> RightLimitOfSlots = new List<int>();
