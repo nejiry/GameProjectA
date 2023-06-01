@@ -9,11 +9,15 @@ TagManager:
   - Inventry
   - Stash
   - Script
+  - Wall
+  - EscapeGate
+  - ItemCreat
+  - InteractArea
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Item
@@ -21,7 +25,7 @@ TagManager:
   - Wall
   - Gimmik
   - ItemHandle
-  - 
+  - InteractArea
   - 
   - 
   - 
