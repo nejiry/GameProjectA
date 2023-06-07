@@ -32,7 +32,8 @@ public class EscapeGate : MonoBehaviour
     }
 
     void OnTriggerExit2D(Collider2D other){
-        EscapeTimePanel.GetComponent<EscapeTimePanel>().PopUpPanel();
+        if (other.transform.tag == "EscapeGate"){
+            EscapeTimePanel.GetComponent<EscapeTimePanel>().PopUpPanel();
     }
-
+    }
 }

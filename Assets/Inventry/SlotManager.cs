@@ -11,15 +11,15 @@ public class SlotManager : MonoBehaviour
     {
         if (other.transform.tag == "Item" && other.GetComponent<Items>().boxFlag == false)
         {
-            if (storing == false && ItemName == "")//ƒXƒƒbƒg‚ª–{“–‚É‹ó‚È‚ç
+            if (storing == false && ItemName == "")//ï¿½Xï¿½ï¿½ï¿½bï¿½gï¿½ï¿½ï¿½{ï¿½ï¿½ï¿½É‹ï¿½È‚ï¿½
             {
-                //ƒXƒƒbƒg‚Ì’‡‚ª‹ó‚È‚ç‹z‚¢‚Ş
+                //ï¿½Xï¿½ï¿½ï¿½bï¿½gï¿½Ì’ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 other.transform.position = this.transform.position;
                 other.transform.SetParent(this.transform);
                 ItemName = other.transform.name;
                 other.GetComponent<Items>().ItemSet = true;
 
-                //•¡”ƒ}ƒX–Ú‚ğ‚ÂƒAƒCƒeƒ€‚Ìˆ—
+                //ï¿½ï¿½ï¿½ï¿½ï¿½}ï¿½Xï¿½Ú‚ï¿½ï¿½ï¿½ï¿½ÂƒAï¿½Cï¿½eï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
                 int horizontalSize = other.GetComponent<Items>().HorizontalItemSize;
                 int verticalSize = other.GetComponent<Items>().VerticalItemSize;
                 if (RelatedSlots(verticalSize, horizontalSize) != null)
@@ -27,31 +27,35 @@ public class SlotManager : MonoBehaviour
                     List<Transform> TGTs = RelatedSlots(verticalSize, horizontalSize);
                     foreach (Transform TGT in TGTs)
                     {
+                        Debug.Log(TGT);
                         bool ItemStoring = TGT.GetComponent<SlotManager>().storing;
                         if (ItemStoring == true)
                         {
                             other.GetComponent<Items>().BackPosition();
+                            Debug.Log("35"+ItemStoring);
                         }
                         else
                         {
                             TGT.GetComponent<SlotManager>().storing = true;
+                            Debug.Log(ItemStoring);
                         }
                     }
                 }
                 else
                 {
                     other.GetComponent<Items>().BackPosition();
+                    Debug.Log("Items40");
                 }
             }
 
-            else if (storing == true && ItemName == other.transform.name)//ƒAƒCƒeƒ€‚ª’†‚É“ü‚Á‚Ä‚¢‚Ä“¯‚¶ƒAƒCƒeƒ€‚È‚ç
+            else if (storing == true && ItemName == other.transform.name)//ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É“ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½Ä“ï¿½ï¿½ï¿½ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½È‚ï¿½
             {
-                //‹z‚¢‚İˆ—
+                //ï¿½zï¿½ï¿½ï¿½ï¿½ï¿½İï¿½ï¿½ï¿½
                 other.transform.position = this.transform.position;
                 other.transform.SetParent(this.transform);
                 ItemName = other.transform.name;
 
-                //•¡”ƒ}ƒX–Ú‚ÌƒAƒCƒeƒ€‚Ìˆ—
+                //ï¿½ï¿½ï¿½ï¿½ï¿½}ï¿½Xï¿½Ú‚ÌƒAï¿½Cï¿½eï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
                 int horizontalSize = other.GetComponent<Items>().HorizontalItemSize;
                 int verticalSize = other.GetComponent<Items>().VerticalItemSize;
                 if (RelatedSlots(verticalSize, horizontalSize) != null)
@@ -65,22 +69,23 @@ public class SlotManager : MonoBehaviour
                 else
                 {
                     other.GetComponent<Items>().BackPosition();
-                    Debug.Log("here");
+                    Debug.Log("Items60");
                 }
             }
 
-            else if (storing == true && ItemName == "")//Ši”[’†‚ÅƒAƒCƒeƒ€ƒl[ƒ€–³‚µi•¡”ƒXƒƒbƒgƒAƒCƒeƒ€‚Ì”ÍˆÍ“à‚ÌƒXƒƒbƒgj
+            else if (storing == true && ItemName == "")//ï¿½iï¿½[ï¿½ï¿½ï¿½ÅƒAï¿½Cï¿½eï¿½ï¿½ï¿½lï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½bï¿½gï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½Ì”ÍˆÍ“ï¿½ï¿½ÌƒXï¿½ï¿½ï¿½bï¿½gï¿½j
             {
                 other.GetComponent<Items>().BackPosition();
+                Debug.Log("Items70");
             }
 
-            else if (storing == false && ItemName == other.transform.name)//ƒAƒCƒeƒ€‰ñ“]‚Ì‹““®
+            else if (storing == false && ItemName == other.transform.name)//ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½ï¿½]ï¿½ï¿½ï¿½Ì‹ï¿½ï¿½ï¿½
             {
                 other.transform.position = this.transform.position;
                 other.transform.SetParent(this.transform);
                 ItemName = other.transform.name;
 
-                //•¡”ƒ}ƒX–Ú‚ÌƒAƒCƒeƒ€‚Ìˆ—
+                //ï¿½ï¿½ï¿½ï¿½ï¿½}ï¿½Xï¿½Ú‚ÌƒAï¿½Cï¿½eï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
                 int horizontalSize = other.GetComponent<Items>().HorizontalItemSize;
                 int verticalSize = other.GetComponent<Items>().VerticalItemSize;
                 if (RelatedSlots(verticalSize, horizontalSize) != null)
@@ -96,6 +101,7 @@ public class SlotManager : MonoBehaviour
                                 other.GetComponent<Items>().ResetSlotBool();
                                 other.GetComponent<Items>().TurnItem();
                                 other.GetComponent<Items>().BackPosition();
+                                Debug.Log("Items100");
                             }
                             else
                             {
@@ -111,20 +117,21 @@ public class SlotManager : MonoBehaviour
                 else
                 {
                     other.GetComponent<Items>().BackPosition();
+                    Debug.Log("Items110");
                 }
             }
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)//ƒAƒCƒeƒ€‚ªƒXƒƒbƒg‚©‚ç—£‚ê‚½‚Ìˆ—
+    void OnTriggerExit2D(Collider2D other)//ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½bï¿½gï¿½ï¿½ï¿½ç—£ï¿½ê‚½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
     {
         if (other.transform.tag == "Item")
         {
             if (other.GetComponent<Items>().ItemSet == true)
-            //—£‚ê‚½ƒAƒCƒeƒ€‚ªƒZƒbƒg‚³‚ê‚Ä‚éƒAƒCƒeƒ€‚¾‚Á‚½‚È‚ç
+            //ï¿½ï¿½ï¿½ê‚½ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½ï¿½ï¿½Zï¿½bï¿½gï¿½ï¿½ï¿½ï¿½Ä‚ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½
             {
                 if (ItemName == other.transform.name)
-                //‚»‚ÌƒAƒCƒeƒ€‚ªƒZƒbƒg‚³‚ê‚Ä‚éƒAƒCƒeƒ€‚Æ“¯‚¶–¼‘O‚¾‚Á‚½‚ç
+                //ï¿½ï¿½ï¿½ÌƒAï¿½Cï¿½eï¿½ï¿½ï¿½ï¿½ï¿½Zï¿½bï¿½gï¿½ï¿½ï¿½ï¿½Ä‚ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½Æ“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 {
                     storing = false;
                     other.GetComponent<Items>().ItemSet = false;
@@ -140,6 +147,7 @@ public class SlotManager : MonoBehaviour
                             if (TGT.GetComponent<SlotManager>().ItemName == "")
                             {
                                 TGT.GetComponent<SlotManager>().storing = false;
+                                Debug.Log("SlotManager");
                             }
                         }
                     }
@@ -158,48 +166,46 @@ public class SlotManager : MonoBehaviour
             Destroy(item.gameObject);
         }
     }
-    void Update()
-    {
-    }
+
 
     public List<Transform> RelatedSlots(int verticalSize, int horizontalSize)
     {
         List<Transform> TGTs = new List<Transform>();
         GameObject parent = this.transform.parent.gameObject;
         int horizontalSlotsCount = parent.GetComponent<SlotsBundler>().HorizontalSlotsCount;
-        int SlotsCount = parent.transform.childCount;//ƒXƒƒbƒg‚Ì”
-        int BottomSlotLine = (SlotsCount -1) - horizontalSlotsCount * (verticalSize - 1);//‚±‚ÌƒGƒŠƒA‚ÍƒAƒCƒeƒ€‚ªŠi”[‚³‚ê‚éƒXƒƒbƒg‚É‚Í‚Å‚«‚È‚¢
+        int SlotsCount = parent.transform.childCount;//ï¿½Xï¿½ï¿½ï¿½bï¿½gï¿½Ìï¿½
+        int BottomSlotLine = (SlotsCount -1) - horizontalSlotsCount * (verticalSize - 1);//ï¿½ï¿½ï¿½ÌƒGï¿½ï¿½ï¿½Aï¿½ÍƒAï¿½Cï¿½eï¿½ï¿½ï¿½ï¿½ï¿½iï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½bï¿½gï¿½É‚Í‚Å‚ï¿½ï¿½È‚ï¿½
         int RightsideSlotLine;
         int SlotsLine = SlotsCount / horizontalSlotsCount;
         List<int> RightLimitOfSlots = new List<int>();
         Transform Slots = parent.GetComponentInChildren<Transform>();
-        int i = 0;//ƒAƒCƒeƒ€‚ªŠi”[‚³‚ê‚é‚Í‚¸‚ÌƒXƒƒbƒg‚ÌêŠ
+        int i = 0;//ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½ï¿½ï¿½iï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Í‚ï¿½ï¿½ÌƒXï¿½ï¿½ï¿½bï¿½gï¿½ÌêŠ
 
 
-            foreach (Transform slot in Slots)//‘SƒXƒƒbƒg‚Ìæ“¾
+            foreach (Transform slot in Slots)//ï¿½Sï¿½Xï¿½ï¿½ï¿½bï¿½gï¿½Ìæ“¾
             {
-                //‰E’[‚Ìˆ—
-                for(int l = 0; l < SlotsLine; l++)//1—ñ‚²‚Æ‚ÌƒXƒƒbƒgƒ‰ƒCƒ“‚É•ª‰ğ
+                //ï¿½Eï¿½[ï¿½Ìï¿½ï¿½ï¿½
+                for(int l = 0; l < SlotsLine; l++)//1ï¿½ñ‚²‚Æ‚ÌƒXï¿½ï¿½ï¿½bï¿½gï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½É•ï¿½ï¿½ï¿½
                 {
-                    RightsideSlotLine = (l + 1) * horizontalSlotsCount - 1;//‰E’[‚ğw’èARightsideSlotLine - horizontalSize - 1 = nonaggressionSlot
-                        for (int rl = 0; rl < horizontalSize - 1; rl++)//‰E’[‚ÌƒXƒƒbƒg‚©‚çrl‚ğˆø‚¢‚Ä‚¸‚ç‚µ‚Äˆ—‚·‚é‚Â‚à‚è
+                    RightsideSlotLine = (l + 1) * horizontalSlotsCount - 1;//ï¿½Eï¿½[ï¿½ï¿½ï¿½wï¿½ï¿½ARightsideSlotLine - horizontalSize - 1 = nonaggressionSlot
+                        for (int rl = 0; rl < horizontalSize - 1; rl++)//ï¿½Eï¿½[ï¿½ÌƒXï¿½ï¿½ï¿½bï¿½gï¿½ï¿½ï¿½ï¿½rlï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ç‚µï¿½Äï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½
                         {
-                            RightLimitOfSlots.Add(RightsideSlotLine - rl);//—ñ‚ÌÅ‰E’[‚Ü‚Å“Á’è‚Å‚«‚½‚©‚çƒTƒCƒY•ªƒXƒƒbƒgæ“¾‚µ‚ÄA
+                            RightLimitOfSlots.Add(RightsideSlotLine - rl);//ï¿½ï¿½ÌÅ‰Eï¿½[ï¿½Ü‚Å“ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Tï¿½Cï¿½Yï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½bï¿½gï¿½æ“¾ï¿½ï¿½ï¿½ÄA
                         }
                 }
 
-                //Å‰º‚Ìˆ—
-                if (i <= BottomSlotLine)//ƒAƒCƒeƒ€‚ªŠi”[”ÍˆÍ“à‚È‚ç‚ÎˆÈ‰º‚Ìˆ—
+                //ï¿½Å‰ï¿½ï¿½Ìï¿½ï¿½ï¿½
+                if (i <= BottomSlotLine)//ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½ï¿½ï¿½iï¿½[ï¿½ÍˆÍ“ï¿½ï¿½È‚ï¿½ÎˆÈ‰ï¿½ï¿½Ìï¿½ï¿½ï¿½
                 {
-                    if (slot.name == this.transform.name)//ƒAƒCƒeƒ€‚ªŠi”[‚³‚ê‚é‚Í‚¸‚ÌƒXƒƒbƒg‚ğæ“¾
+                    if (slot.name == this.transform.name)//ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½ï¿½ï¿½iï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Í‚ï¿½ï¿½ÌƒXï¿½ï¿½ï¿½bï¿½gï¿½ï¿½ï¿½æ“¾
                     {
                         if (RightLimitOfSlots.Contains(i) == false)
                         {
-                            for (int v = 0; verticalSize > v; v++)//c•ûŒü‚ÌƒTƒCƒY
+                            for (int v = 0; verticalSize > v; v++)//ï¿½cï¿½ï¿½ï¿½ï¿½ï¿½ÌƒTï¿½Cï¿½Y
                             {
-                                for (int h = 0; horizontalSize > h; h++)//‰¡•ûŒü‚ÌƒTƒCƒY
+                                for (int h = 0; horizontalSize > h; h++)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌƒTï¿½Cï¿½Y
                                 {
-                                    TGTs.Add(parent.transform.GetChild(h + (horizontalSlotsCount * v)).transform);//i+5”Ô–Ú‚ÌƒXƒƒbƒg‚ğ‘I‘ğ‚µ‚Ä‘—‚è•Ô‚·
+                                    TGTs.Add(parent.transform.GetChild(i + (h + (horizontalSlotsCount * v)) ).transform);//i+5ï¿½Ô–Ú‚ÌƒXï¿½ï¿½ï¿½bï¿½gï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½Ä‘ï¿½ï¿½ï¿½Ô‚ï¿½
                                 }
                             }
                             return TGTs;

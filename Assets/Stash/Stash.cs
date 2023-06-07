@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 
-//‰½‚ğƒZ[ƒu‚·‚é‚©
+//ï¿½ï¿½ï¿½ï¿½ï¿½Zï¿½[ï¿½uï¿½ï¿½ï¿½é‚©
 
 public class Stash : MonoBehaviour, IJsonSaveable
 {
@@ -60,7 +60,7 @@ public class Stash : MonoBehaviour, IJsonSaveable
                 string ItemName = inventryDict[number]["item"].ToObject<string>();
                 if (ItemName != "")
                 {
-                    GameObject obj = (GameObject)Resources.Load(ItemName);
+                    GameObject obj = (GameObject)Resources.Load("Item/"+ItemName);
                     var iteminfomation = Slot.GetComponent<SlotManager>();
                     if (iteminfomation.ItemName == "")
                     {

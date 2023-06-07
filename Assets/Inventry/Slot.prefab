@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7485638112825438021}
   - component: {fileID: 7763928026723590130}
-  - component: {fileID: 6836563409505981573}
   - component: {fileID: 5053722956798043937}
+  - component: {fileID: 6645135365449844472}
   m_Layer: 2
   m_Name: Slot
   m_TagString: ItemSlot
@@ -65,20 +65,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.62, y: 0.62}
   m_EdgeRadius: 0
---- !u!114 &6836563409505981573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6651426762461241433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b95bf06d6e59fa4587994b730438293, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  storing: 0
-  ItemName: 
 --- !u!50 &5053722956798043937
 Rigidbody2D:
   serializedVersion: 4
@@ -100,3 +86,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6645135365449844472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6651426762461241433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b95bf06d6e59fa4587994b730438293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storing: 0
+  ItemName: 

@@ -24,11 +24,11 @@ public class Items : MonoBehaviour
     }
     
 
-    void OnMouseDrag()//ƒhƒ‰ƒbƒO’†‚ÌƒAƒjƒ[ƒVƒ‡ƒ“
+    void OnMouseDrag()//ï¿½hï¿½ï¿½ï¿½bï¿½Oï¿½ï¿½ï¿½ÌƒAï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½
     {
-        //ƒhƒ‰ƒbƒO’†‚Í‹z‚¢‚ñ‚Å‚Í‚¾‚ß
+        //ï¿½hï¿½ï¿½ï¿½bï¿½Oï¿½ï¿½ï¿½Í‹zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å‚Í‚ï¿½ï¿½ï¿½
         boxFlag = true;
-        //ˆÈ‰ºls‚Íƒhƒ‰ƒbƒO‚µ‚½‚ÉƒIƒuƒWƒFƒNƒg‚ğ“®‚©‚·ƒR[ƒh
+        //ï¿½È‰ï¿½ï¿½lï¿½sï¿½Íƒhï¿½ï¿½ï¿½bï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÉƒIï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ğ“®‚ï¿½ï¿½ï¿½ï¿½Rï¿½[ï¿½h
         Vector3 thisPosition = Input.mousePosition;
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(thisPosition);
         worldPosition.z = 0f;
@@ -40,9 +40,9 @@ public class Items : MonoBehaviour
         trigWorking = true;
         if (other.transform.tag == "Item" && boxFlag == false )
         {
-            if (other.transform.name == this.transform.name)//ƒAƒCƒeƒ€‚ÌƒXƒ^ƒbƒN
+            if (other.transform.name == this.transform.name)//ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½ÌƒXï¿½^ï¿½bï¿½N
             {
-                if (ItemSet == false && ItemCounted == false)//ˆÚ“®‚³‚¹‚æ‚¤‚Æ‚µ‚½ƒAƒCƒeƒ€
+                if (ItemSet == false && ItemCounted == false)//ï¿½Ú“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ‚¤ï¿½Æ‚ï¿½ï¿½ï¿½ï¿½Aï¿½Cï¿½eï¿½ï¿½
                 {
                     int otherCount = other.GetComponent<Items>().ItemCount;
                     other.GetComponent<Items>().ItemCount = 0;
@@ -73,9 +73,9 @@ public class Items : MonoBehaviour
     
     void Update()
     {
-        if (boxFlag == true && Input.GetKeyDown(KeyCode.F))
+        if (boxFlag == true && Input.GetKeyDown(KeyCode.T))
         {
-            //e—v‘f‚ÌƒXƒƒbƒgæ“¾‚µ‚Ä‚»‚ÌƒXƒƒbƒg‚Æ‚±‚ÌƒAƒCƒeƒ€‚Ì”ÍˆÍ‚ğæ“¾‚»‚Ì”ÍˆÍ‚Ìbool‚ğ•ÏX‚µ‚Ä‚©‚ç‰ñ“]‚·‚é
+            //ï¿½eï¿½vï¿½fï¿½ÌƒXï¿½ï¿½ï¿½bï¿½gï¿½æ“¾ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ÌƒXï¿½ï¿½ï¿½bï¿½gï¿½Æ‚ï¿½ï¿½ÌƒAï¿½Cï¿½eï¿½ï¿½ï¿½Ì”ÍˆÍ‚ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½Ì”ÍˆÍ‚ï¿½boolï¿½ï¿½ÏXï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½]ï¿½ï¿½ï¿½ï¿½
             ResetSlotBool();
             TurnItem();
         }
@@ -93,7 +93,7 @@ public class Items : MonoBehaviour
         trigWorking = false;
     }
     
-    void OnMouseUp()//¶ƒNƒŠ‚ğã‚°‚½‚çboxflag‚ğfalse‚É‚µ‚ÄƒgƒŠƒK[”­“®‚³‚¹‚éB”­“®‚µ‚È‚©‚Á‚½‚çƒAƒCƒeƒ€‚ğŒ³‚ÌˆÊ’u‚É–ß‚·
+    void OnMouseUp()//ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½ã‚°ï¿½ï¿½ï¿½ï¿½boxflagï¿½ï¿½falseï¿½É‚ï¿½ï¿½Äƒgï¿½ï¿½ï¿½Kï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Bï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌˆÊ’uï¿½É–ß‚ï¿½
     {
         boxFlag = false;
         ItemCounted = false;

@@ -11,14 +11,15 @@ public class TestButton : MonoBehaviour
     {
         var itemList = new List<string>() { "Cloth(crean)", "Cloth(dirty)", "Stone", "food", "Makimono", "WoodStick", "GoldenKey", "Rope" };
         string itemname = itemList[Random.Range(0, itemList.Count)];
-        GameObject obj = (GameObject)Resources.Load(itemname);
+        GameObject obj = (GameObject)Resources.Load("Item/"+itemname);
         GameObject parent = GameObject.Find("InventrySlots");
         Transform Slots = parent.GetComponentInChildren<Transform>();
         foreach (Transform slot in Slots)
         {
             var iteminfomation = slot.GetComponent<SlotManager>();
-            if(iteminfomation.ItemName == "")
+            if(iteminfomation.storing == false)
             {
+                print("generate" + slot);
                 var newItem = Instantiate(obj);
                 itemPosition = slot.position;
                 newItem.transform.position = itemPosition;
