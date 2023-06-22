@@ -14,8 +14,11 @@ public class SlotManager : MonoBehaviour
             if (storing == false && ItemName == "")//�X���b�g���{���ɋ�Ȃ�
             {
                 //�X���b�g�̒�����Ȃ�z������
-                other.transform.position = this.transform.position;
                 other.transform.SetParent(this.transform);
+
+                Vector3 ItemTransform = this.transform.position;
+                other.transform.position = ItemTransform;
+
                 ItemName = other.transform.name;
                 other.GetComponent<Items>().ItemSet = true;
 
@@ -27,7 +30,6 @@ public class SlotManager : MonoBehaviour
                     List<Transform> TGTs = RelatedSlots(verticalSize, horizontalSize);
                     foreach (Transform TGT in TGTs)
                     {
-                        Debug.Log(TGT);
                         bool ItemStoring = TGT.GetComponent<SlotManager>().storing;
                         if (ItemStoring == true)
                         {
@@ -161,9 +163,9 @@ public class SlotManager : MonoBehaviour
         if (storing == true)
         {
             GameObject item = transform.GetChild(0).gameObject;
+            Destroy(item.gameObject);
             storing = false;
             ItemName = "";
-            Destroy(item.gameObject);
         }
     }
 

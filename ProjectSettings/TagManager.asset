@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Item
+  - Script
+  - Inventry
+  - Stash
+  - ItemCreat
+  - EscapeGate
+  - InteractArea
+  - Wall
+  - Backpack
   layers:
   - Default
   - TransparentFX
@@ -11,11 +20,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Handle
+  - Slot
+  - Equipment
+  - EquipmentSlot
+  - Item
   - 
   - 
   - 

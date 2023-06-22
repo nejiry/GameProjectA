@@ -26,7 +26,10 @@ public class EscapeGate : MonoBehaviour
             float countTime = startTime - TimeCounter.GetComponent<TimeManager>().ingameTimes;
             countTimeText.SetText("{0:1}",countTime);
             if(countTime > timeRequired){
-                SceneManager.LoadScene("Menu");
+                GameObject saveSystem = GameObject.Find("TemporarilySaveSystem");
+                saveSystem.GetComponent<InGameSavingSystem>().Delete();
+                //SceneManager.LoadScene("Menu");
+                Debug.Log("Escape");
             }
         }
     }

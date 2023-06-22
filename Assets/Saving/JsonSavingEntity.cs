@@ -5,32 +5,34 @@ using UnityEngine;
 
 public class JsonSavingEntity : MonoBehaviour
 {
-    public JToken CaptureAsJtoken()//•Û‘¶
+    public JToken CaptureAsJtoken()//ï¿½Û‘ï¿½ï¿½ï¿½
     {
-        JObject state = new JObject();//V‹KJƒIƒuƒWƒFƒNƒg‚Ìì¬
-        IDictionary<string, JToken> stateDict = state;//JƒIƒuƒWƒFƒNƒg‚ğ«‘Œ^‚É•ÏŠ·
-        foreach (IJsonSaveable jsonSaveable in GetComponents<IJsonSaveable>())//ŠeIJsonSaveable‚ğÀs‚µ‚ÄA•Û‘¶ƒf[ƒ^‚ğW‚ß‚é
+        JObject state = new JObject();//ï¿½Vï¿½KJï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ìì¬
+        IDictionary<string, JToken> stateDict = state;//Jï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½^ï¿½É•ÏŠï¿½
+        foreach (IJsonSaveable jsonSaveable in GetComponents<IJsonSaveable>())//ï¿½eIJsonSaveableï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ÄAï¿½Û‘ï¿½ï¿½fï¿½[ï¿½^ï¿½ï¿½ï¿½Wï¿½ß‚ï¿½
         {
-            JToken token = jsonSaveable.CaptureAsJToken();//‚»‚ê‚¼‚ê‚ÌCaptureAsJToken‚ğÀs
-            string component = jsonSaveable.GetType().ToString();//ƒIƒuƒWƒFƒNƒg‚Ìƒ^ƒCƒvi«‘Œ^‚âƒIƒuƒWƒFƒNƒgŒ^j‚ğString‚É•Ï‚¦‚ÄƒLƒƒƒbƒVƒ…
-            Debug.Log($"{name} Capture {component} = {token.ToString()}");//ƒƒO‚Ìo—Í
-            stateDict[jsonSaveable.GetType().ToString()] = token;//{"ƒIƒuƒWƒFƒNƒgƒ^ƒCƒv":{"token"}}
+            JToken token = jsonSaveable.CaptureAsJToken();//ï¿½ï¿½ï¿½ê‚¼ï¿½ï¿½ï¿½CaptureAsJTokenï¿½ï¿½ï¿½ï¿½ï¿½s
+            string component = jsonSaveable.GetType().ToString();//ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ìƒ^ï¿½Cï¿½vï¿½iï¿½ï¿½ï¿½ï¿½ï¿½^ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½^ï¿½jï¿½ï¿½Stringï¿½É•Ï‚ï¿½ï¿½ÄƒLï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½
+            Debug.Log($"{name} Capture {component} = {token.ToString()}");//ï¿½ï¿½ï¿½Oï¿½Ìoï¿½ï¿½
+            stateDict[jsonSaveable.GetType().ToString()] = token;//{"ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½^ï¿½Cï¿½v":{"token"}}
         }
         return state;
     }
 
-    public void RestoreFromJToken(JToken s) //“Ç‚İ‚İ
+    public void RestoreFromJToken(JToken s) //ï¿½Ç‚İï¿½ï¿½İï¿½
     {
-        JObject state = s.ToObject<JObject>();//Jtoken‚ğJƒIƒuƒWƒFƒNƒg‚É•ÏŠ·
-        IDictionary<string, JToken> stateDict = state;//JƒIƒuƒWƒFƒNƒg‚ğ«‘Œ^‚É•ÏŠ·
-        foreach (IJsonSaveable jsonSaveable in GetComponents<IJsonSaveable>())//IJsonSaveable‚ğÀs‚µ‚ÄA•Û‘¶ƒf[ƒ^‚ğW‚ß‚é
+        Debug.Log("JsonSavingEntity");
+        JObject state = s.ToObject<JObject>();//Jtokenï¿½ï¿½Jï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½É•ÏŠï¿½
+        IDictionary<string, JToken> stateDict = state;//Jï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½^ï¿½É•ÏŠï¿½
+        foreach (IJsonSaveable jsonSaveable in GetComponents<IJsonSaveable>())//IJsonSaveableï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ÄAï¿½Û‘ï¿½ï¿½fï¿½[ï¿½^ï¿½ï¿½ï¿½Wï¿½ß‚ï¿½
         {
-            string component = jsonSaveable.GetType().ToString();//ƒIƒuƒWƒFƒNƒg‚Ìƒ^ƒCƒvi«‘Œ^‚âƒIƒuƒWƒFƒNƒgŒ^j‚ğString‚É•Ï‚¦‚ÄƒLƒƒƒbƒVƒ…
-            if (stateDict.ContainsKey(component))//ƒL[‚ÉƒLƒƒƒbƒVƒ…‚µ‚½‚Ì‚ª‚ ‚ê‚Î
+            string component = jsonSaveable.GetType().ToString();
+            Debug.Log(component);
+            if (stateDict.ContainsKey(component))//ï¿½Lï¿½[ï¿½ÉƒLï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             {
 
-                Debug.Log($"{name} Restore {component} =>{stateDict[component].ToString()}");//ƒƒO‚Ìo—Í
-                jsonSaveable.RestoreFromJToken(stateDict[component]);//‚»‚ê‚¼‚ê‚ÌRestoreFromJToken‚Åˆ—
+                Debug.Log($"{name} Restore {component} =>{stateDict[component].ToString()}");//ï¿½ï¿½ï¿½Oï¿½Ìoï¿½ï¿½
+                jsonSaveable.RestoreFromJToken(stateDict[component]);//ï¿½ï¿½ï¿½ê‚¼ï¿½ï¿½ï¿½RestoreFromJTokenï¿½Åï¿½ï¿½ï¿½
             }
         }
     }

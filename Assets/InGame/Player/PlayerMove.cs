@@ -19,15 +19,14 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        axisH = Input.GetAxisRaw("Horizontal");
-        axisV = Input.GetAxisRaw("Vertical");
+        if(UIMenuBool.activeSelf == false){
+            axisH = Input.GetAxisRaw("Horizontal");
+            axisV = Input.GetAxisRaw("Vertical");
+        }
 
         if (Input.GetKeyDown(KeyCode.F))
         {
             MenuToggle(); 
-            if(creat != null){
-                creat.GetComponent<CreatManager>().Open();
-            }
         }
     }
 
@@ -37,25 +36,42 @@ public class PlayerMove : MonoBehaviour
 
     //クレートを開ける動作
     void OnTriggerStay2D(Collider2D other){
-        Debug.Log("enter");
         if(other.transform.tag == "InteractArea"){
-            creat = other.transform.parent.gameObject;
+            if (UIMenuBool.activeSelf == false){
+                creat = other.transform.parent.gameObject;
+            }
         }
     }
     void OnTriggerExit2D(Collider2D other){
         if(other.transform.tag == "InteractArea"){
+            if (UIMenuBool.activeSelf){
+                MenuClose();
+            }
             creat = null;
         }
     }
 
     public void MenuToggle(){
-        if (UIMenuBool.activeSelf)
-            {
-            UIMenuBool.SetActive(false);
-            }
-             else
-            {
+        if (UIMenuBool.activeSelf){
+                MenuClose();
+        }
+        else{
             UIMenuBool.SetActive(true);
+            if(creat != null){
+                creat.GetComponent<CreatManager>().Open();
             }
+        }
+    }
+
+    void MenuClose(){
+        if(creat != null){
+            creat.GetComponent<InGameSavingEntity>().TemporarilySaveCoreSystem();
+            GameObject parent = GameObject.Find("ItemStash");
+            Transform Slots = parent.GetComponentInChildren<Transform>();
+            foreach (Transform slot in Slots){
+                slot.GetComponent<SlotManager>().SlotItemDelete();
+            }
+        }
+        UIMenuBool.SetActive(false);
     }
 }

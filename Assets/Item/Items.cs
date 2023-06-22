@@ -16,23 +16,33 @@ public class Items : MonoBehaviour
     public int VerticalItemSize;
     public int HorizontalItemSize;
     public bool itemTurn = false;
+    public TextMeshProUGUI ItemCountText;
+    public TextMeshProUGUI ItemNameText;
+    public Vector3 beginMousePosition;
 
     void OnMouseDown()
     {
+        Debug.Log("Pushing");
         beginPosition = this.transform.position;
         beginItemTurn = itemTurn;
+        beginMousePosition = Input.mousePosition;
     }
     
+    void Start(){
+        ItemNameText.SetText(this.transform.name);
+        
+    }
 
-    void OnMouseDrag()//�h���b�O���̃A�j���[�V����
+    void OnMouseDrag()
     {
-        //�h���b�O���͋z������ł͂���
         boxFlag = true;
-        //�ȉ��l�s�̓h���b�O�������ɃI�u�W�F�N�g�𓮂����R�[�h
-        Vector3 thisPosition = Input.mousePosition;
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(thisPosition);
-        worldPosition.z = 0f;
-        this.transform.position = worldPosition;
+
+        Vector3 itemPosition = beginPosition;
+        Vector3 thisPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 itemWorldPosition = Camera.main.ScreenToWorldPoint(beginMousePosition);
+        Vector3 NewWorldPosition = itemPosition + (thisPosition - itemWorldPosition);//
+        NewWorldPosition.z = 1f;
+        this.transform.position = NewWorldPosition;
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -66,7 +76,7 @@ public class Items : MonoBehaviour
         {
             if (boxFlag == false && ItemSet == false)
             {
-                this.transform.position = beginPosition;
+               //this.transform.position = beginPosition;
             }
         }
     }
@@ -80,8 +90,8 @@ public class Items : MonoBehaviour
             TurnItem();
         }
 
+        ItemCountText.SetText(ItemCount.ToString());
 
-        this.GetComponent<TextMeshProUGUI>().text = ItemCount.ToString();
         if (ItemCount <= 0)
         {
             DestroyItem();

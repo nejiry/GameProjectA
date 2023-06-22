@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class TimeManager : MonoBehaviour
 {
     public TextMeshProUGUI timeText;
     
-    public float maxTimes = 60;//制限時間
+    public float timeLimit = 1200;//1200 = 20min  //制限時間
     public float ingameTimes;//経過時間
     public float times;//基準になる時間
 
@@ -19,7 +20,9 @@ public class TimeManager : MonoBehaviour
     void Update()
     {
         times += Time.deltaTime;
-        ingameTimes = maxTimes - times;
-        timeText.SetText("{0:1}",ingameTimes);
+        ingameTimes = timeLimit - times;
+        int xxx = (int)ingameTimes;
+        var span = new TimeSpan(0, 0, xxx);
+        timeText.SetText(span.ToString(@"mm\:ss"));
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-//ƒZ[ƒu‚ÌƒL[ƒRƒ“ƒtƒBƒO
+//ï¿½Zï¿½[ï¿½uï¿½ÌƒLï¿½[ï¿½Rï¿½ï¿½ï¿½tï¿½Bï¿½O
 
 
     public class SavingWrapper : MonoBehaviour
@@ -9,7 +9,7 @@ using UnityEngine;
 
     private void Start()
     {
-        GetComponent<SavingSystem>().Load(defaultSaveFile);
+        //GetComponent<SavingSystem>().Load(defaultSaveFile);
     }
 
     private void Update()

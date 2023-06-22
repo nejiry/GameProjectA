@@ -7,7 +7,7 @@ using UnityEngine;
 
 //�����Z�[�u���邩
 
-public class Inventry : MonoBehaviour,IJsonSaveable
+public class InventrySlots : MonoBehaviour, IJsonSaveable
 {
 
     public JToken CaptureAsJToken()
@@ -43,11 +43,12 @@ public class Inventry : MonoBehaviour,IJsonSaveable
 
     public void RestoreFromJToken(JToken s)
     {
+        Debug.Log("46");
         if (s is JObject stateObject)
         {
             IDictionary<string, JToken> stateDict = stateObject;
             JToken inventryDict = new JObject();
-            inventryDict = stateDict["Inventry"];
+            inventryDict = stateDict["InventrySlots"];
             int SlotCount = inventryDict["SlotCount"].ToObject<int>();
             GameObject parent = GameObject.Find("InventrySlots");
             for (int i = 0; i < SlotCount; i++) {
@@ -61,7 +62,7 @@ public class Inventry : MonoBehaviour,IJsonSaveable
                     var iteminfomation = Slot.GetComponent<SlotManager>();
                     if (iteminfomation.ItemName == "")
                     {
-                        var newItem = Instantiate(obj);
+                        var newItem = Instantiate(obj,Vector3.zero, Quaternion.identity, Slot.transform);
                         Vector3 itemPosition = Slot.position;
                         newItem.transform.position = itemPosition;
                         newItem.name = ItemName;
@@ -71,7 +72,7 @@ public class Inventry : MonoBehaviour,IJsonSaveable
                     else if(iteminfomation.ItemName != "")
                     {
                         Slot.GetComponent<SlotManager>().SlotItemDelete();
-                        var newItem = Instantiate(obj);
+                        var newItem = Instantiate(obj,Vector3.zero, Quaternion.identity, Slot.transform);
                         Vector3 itemPosition = Slot.position;
                         newItem.transform.position = itemPosition;
                         newItem.name = ItemName;

@@ -11,19 +11,19 @@ using UnityEngine.SceneManagement;
     public class InGameSavingSystem : MonoBehaviour
     {
         private const string extension = ".json";
-        private const string saveFile = "TemporarilySave";
+        private const string saveFile = "TemporarilySaveData";
 
-        public void Save(string saveFile)
-        {
-            JObject state = LoadJsonFromFile(saveFile);
-            CaptureAsToken(state);
-            SaveFileAsJSon(saveFile, state);
-            
+        public JObject GetState(){
+            JObject state = LoadJsonFromFile();
+            return state;
         }
 
-        public void SaveFileAsJSon(string saveFile, JObject state)
+
+
+
+        public void TemporarilySaveFileAsJSon(JObject state)
         {
-            string path = GetPathFromSaveFile(saveFile);
+            string path = GetPathFromSaveFile();
             print("Saving to " + path);
             using (var textWriter = File.CreateText(path))
             {
@@ -35,27 +35,19 @@ using UnityEngine.SceneManagement;
                 }
             }
         }
-
-        public void Load(string saveFile)
-        {
-            RestoreFromToken(LoadJsonFromFile(saveFile));
-        }
-
-
-
-        private string GetPathFromSaveFile(string saveFile)
+        private string GetPathFromSaveFile()
         {
             return Path.Combine(Application.persistentDataPath, saveFile + extension);
         }
 
-        public void Delete(string saveFile)
+        public void Delete()
         {
-            File.Delete(GetPathFromSaveFile(saveFile));
+            File.Delete(GetPathFromSaveFile());
         }
 
-        private JObject LoadJsonFromFile(string saveFile)
+        private JObject LoadJsonFromFile()
         {
-            string path = GetPathFromSaveFile(saveFile);
+            string path = GetPathFromSaveFile();
             if (!File.Exists(path))
             {
                 return new JObject();
@@ -71,23 +63,4 @@ using UnityEngine.SceneManagement;
                 }
             }
         }
-
-        private void RestoreFromToken(JObject state)
-        {
-            IDictionary<string, JToken> stateDict = state;
-            foreach (JsonSavingEntity saveable in FindObjectsOfType<JsonSavingEntity>())
-        {
-                saveable.RestoreFromJToken(state);
-            }
-        }
-
-        private void CaptureAsToken(JObject state)
-        {
-            IDictionary<string, JToken> stateDict = state;
-            foreach (JsonSavingEntity saveable in FindObjectsOfType<JsonSavingEntity>())
-            {
-                stateDict[saveable.name] = saveable.CaptureAsJtoken();
-            }
-        }
-
     }

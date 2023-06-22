@@ -15,7 +15,7 @@ public class Stash : MonoBehaviour, IJsonSaveable
         int i = 0;
         JObject state = new JObject();
         IDictionary<string, JToken> stateDict = state;
-        GameObject parent = GameObject.Find("StashSlots");
+        GameObject parent = GameObject.Find("Stash");
         
         Transform Slots = parent.GetComponentInChildren<Transform>();
 
@@ -50,7 +50,7 @@ public class Stash : MonoBehaviour, IJsonSaveable
             JToken inventryDict = new JObject();
             inventryDict = stateDict["Stash"];
             int SlotCount = inventryDict["SlotCount"].ToObject<int>();
-            GameObject parent = GameObject.Find("StashSlots");
+            GameObject parent = GameObject.Find("Stash");
             for (int i = 0; i < SlotCount; i++)
             {
                 string number = i.ToString();
@@ -64,7 +64,7 @@ public class Stash : MonoBehaviour, IJsonSaveable
                     var iteminfomation = Slot.GetComponent<SlotManager>();
                     if (iteminfomation.ItemName == "")
                     {
-                        var newItem = Instantiate(obj);
+                        var newItem = Instantiate(obj,Vector3.zero, Quaternion.identity, Slot.transform);
                         Vector3 itemPosition = Slot.position;
                         newItem.transform.position = itemPosition;
                         newItem.name = ItemName;
@@ -73,7 +73,7 @@ public class Stash : MonoBehaviour, IJsonSaveable
                     else if (iteminfomation.ItemName != "")
                     {
                         Slot.GetComponent<SlotManager>().SlotItemDelete();
-                        var newItem = Instantiate(obj);
+                        var newItem = Instantiate(obj,Vector3.zero, Quaternion.identity, Slot.transform);
                         Vector3 itemPosition = Slot.position;
                         newItem.transform.position = itemPosition;
                         newItem.name = ItemName;
