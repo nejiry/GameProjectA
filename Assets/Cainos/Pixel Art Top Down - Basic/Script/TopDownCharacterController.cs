@@ -6,7 +6,8 @@ namespace Cainos.PixelArtTopDown_Basic
 {
     public class TopDownCharacterController : MonoBehaviour
     {
-        public float speed;
+        public float speed;//キャラクターのスピード
+        [SerializeField] GameObject UIMenuBool;
 
         private Animator animator;
 
@@ -18,7 +19,7 @@ namespace Cainos.PixelArtTopDown_Basic
 
         private void Update()
         {
-            Vector2 dir = Vector2.zero;
+            Vector2 dir = Vector2.zero;//Vector2(0,0)をセット
             if (Input.GetKey(KeyCode.A))
             {
                 dir.x = -1;
@@ -39,6 +40,16 @@ namespace Cainos.PixelArtTopDown_Basic
             {
                 dir.y = -1;
                 animator.SetInteger("Direction", 0);
+            }
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if(UIMenuBool.activeSelf){
+                    UIMenuBool.SetActive(false);
+                }
+                else{
+                    UIMenuBool.SetActive(true);
+                }
             }
 
             dir.Normalize();

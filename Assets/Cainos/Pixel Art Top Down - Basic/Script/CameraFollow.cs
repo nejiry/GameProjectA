@@ -16,14 +16,14 @@ namespace Cainos.PixelArtTopDown_Basic
 
         private void Start()
         {
-            if (target == null) return;
+            if (target == null) return;//ターゲットがないなら何もしない
 
             offset = transform.position - target.position;
         }
 
         private void Update()
         {
-            if (target == null) return;
+            if (target == null) return;//ターゲットがないなら何もしない
 
             targetPos = target.position + offset;
             transform.position = Vector3.Lerp(transform.position, targetPos, lerpSpeed * Time.deltaTime);

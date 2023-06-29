@@ -95,6 +95,7 @@ public class Items : MonoBehaviour
         if (ItemCount <= 0)
         {
             DestroyItem();
+            Debug.Log("itemの個数がゼロなので消去");
         }
     }
 
@@ -110,7 +111,7 @@ public class Items : MonoBehaviour
         if (trigWorking == false)
         {
             this.transform.position = beginPosition;
-            Debug.Log("return");
+            Debug.Log("トリガーが動いてないので元の位置に戻す");
         }
     }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //when something get into the alta, make the runes glow
+//何かがオルタに入ったら、ルーンを光らせる
 namespace Cainos.PixelArtTopDown_Basic
 {
 

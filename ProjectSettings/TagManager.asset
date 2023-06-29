@@ -37,8 +37,8 @@ TagManager:
   - Layer 1
   - Layer 2
   - Layer 3
-  - 
-  - 
+  - UI
+  - InventryUI
   - 
   - 
   - 
@@ -58,4 +58,10 @@ TagManager:
     locked: 0
   - name: Layer 3
     uniqueID: 4189426099
+    locked: 0
+  - name: UI
+    uniqueID: 3470587127
+    locked: 0
+  - name: InventryUI
+    uniqueID: 1939507551
     locked: 0

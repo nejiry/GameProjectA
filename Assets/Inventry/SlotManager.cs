@@ -11,9 +11,8 @@ public class SlotManager : MonoBehaviour
     {
         if (other.transform.tag == "Item" && other.GetComponent<Items>().boxFlag == false)
         {
-            if (storing == false && ItemName == "")//�X���b�g���{���ɋ�Ȃ�
+            if (storing == false && ItemName == "")
             {
-                //�X���b�g�̒�����Ȃ�z������
                 other.transform.SetParent(this.transform);
 
                 Vector3 ItemTransform = this.transform.position;
@@ -22,7 +21,6 @@ public class SlotManager : MonoBehaviour
                 ItemName = other.transform.name;
                 other.GetComponent<Items>().ItemSet = true;
 
-                //�����}�X�ڂ����A�C�e���̏���
                 int horizontalSize = other.GetComponent<Items>().HorizontalItemSize;
                 int verticalSize = other.GetComponent<Items>().VerticalItemSize;
                 if (RelatedSlots(verticalSize, horizontalSize) != null)
@@ -34,19 +32,18 @@ public class SlotManager : MonoBehaviour
                         if (ItemStoring == true)
                         {
                             other.GetComponent<Items>().BackPosition();
-                            Debug.Log("35"+ItemStoring);
+                            Debug.Log("格納スロットにほかのアイテムが既にあります:Code01");
                         }
                         else
                         {
                             TGT.GetComponent<SlotManager>().storing = true;
-                            Debug.Log(ItemStoring);
                         }
                     }
                 }
                 else
                 {
                     other.GetComponent<Items>().BackPosition();
-                    Debug.Log("Items40");
+                    Debug.Log("このスロットにアイテムを格納できません:Code01");
                 }
             }
 
@@ -71,14 +68,14 @@ public class SlotManager : MonoBehaviour
                 else
                 {
                     other.GetComponent<Items>().BackPosition();
-                    Debug.Log("Items60");
+                    Debug.Log("このスロットにアイテムを格納できません:Code02");
                 }
             }
 
             else if (storing == true && ItemName == "")//�i�[���ŃA�C�e���l�[�������i�����X���b�g�A�C�e���͈͓̔��̃X���b�g�j
             {
                 other.GetComponent<Items>().BackPosition();
-                Debug.Log("Items70");
+                Debug.Log("格納スロットにほかのアイテムが既にあります:Code02");
             }
 
             else if (storing == false && ItemName == other.transform.name)//�A�C�e����]���̋���
@@ -103,7 +100,7 @@ public class SlotManager : MonoBehaviour
                                 other.GetComponent<Items>().ResetSlotBool();
                                 other.GetComponent<Items>().TurnItem();
                                 other.GetComponent<Items>().BackPosition();
-                                Debug.Log("Items100");
+                                Debug.Log("格納スロットにほかのアイテムが既にあります:Code03");
                             }
                             else
                             {
@@ -119,21 +116,19 @@ public class SlotManager : MonoBehaviour
                 else
                 {
                     other.GetComponent<Items>().BackPosition();
-                    Debug.Log("Items110");
+                    Debug.Log("このスロットにアイテムを格納できません:Code03");
                 }
             }
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)//�A�C�e�����X���b�g���痣�ꂽ���̏���
+    void OnTriggerExit2D(Collider2D other)
     {
         if (other.transform.tag == "Item")
         {
             if (other.GetComponent<Items>().ItemSet == true)
-            //���ꂽ�A�C�e�����Z�b�g����Ă�A�C�e���������Ȃ�
             {
                 if (ItemName == other.transform.name)
-                //���̃A�C�e�����Z�b�g����Ă�A�C�e���Ɠ������O��������
                 {
                     storing = false;
                     other.GetComponent<Items>().ItemSet = false;
@@ -149,7 +144,6 @@ public class SlotManager : MonoBehaviour
                             if (TGT.GetComponent<SlotManager>().ItemName == "")
                             {
                                 TGT.GetComponent<SlotManager>().storing = false;
-                                Debug.Log("SlotManager");
                             }
                         }
                     }

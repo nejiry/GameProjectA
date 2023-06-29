@@ -13,7 +13,7 @@ public class BackpackSlot : MonoBehaviour
          if (other.transform.tag == "Backpack"){
             GameObject Backpack = other.transform.parent.gameObject;
             Backpack.GetComponent<Items>().trigWorking = true;
-            if(other.GetComponent<Equipment>().boxFlag == false){
+            if(Backpack.GetComponent<Items>().boxFlag == false){
                 Backpack.transform.SetParent(this.transform);
                 Backpack.transform.localPosition = new Vector3(-40, 40, 1);
                 Backpack.GetComponent<Items>().ItemSet = true;

@@ -13,5 +13,5 @@ public class Equipment : MonoBehaviour
     void OnMouseUp(){
         boxFlag = false;
     }
-    
+    //もしバックパックのスロット出なければ元の位置に戻す
 }
