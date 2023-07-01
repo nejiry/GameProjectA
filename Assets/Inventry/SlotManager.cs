@@ -175,8 +175,7 @@ public class SlotManager : MonoBehaviour
         int SlotsLine = SlotsCount / horizontalSlotsCount;
         List<int> RightLimitOfSlots = new List<int>();
         Transform Slots = parent.GetComponentInChildren<Transform>();
-        int i = 0;//�A�C�e�����i�[�����͂��̃X���b�g�̏ꏊ
-
+        int i = 0;
 
             foreach (Transform slot in Slots)//�S�X���b�g�̎擾
             {
