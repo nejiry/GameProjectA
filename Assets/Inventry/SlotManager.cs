@@ -13,6 +13,7 @@ public class SlotManager : MonoBehaviour
         {
             if (storing == false && ItemName == "")
             {
+                Debug.Log("storing == false && ItemName == ,");
                 other.transform.SetParent(this.transform);
 
                 Vector3 ItemTransform = this.transform.position;
@@ -49,26 +50,29 @@ public class SlotManager : MonoBehaviour
 
             else if (storing == true && ItemName == other.transform.name)//�A�C�e�������ɓ����Ă��ē����A�C�e���Ȃ�
             {
-                //�z�����ݏ���
-                other.transform.position = this.transform.position;
-                other.transform.SetParent(this.transform);
-                ItemName = other.transform.name;
+                
+                if(other.GetComponent<Items>().ItemSet != true){
+                    Debug.Log("storing == true && ItemName == other.transform.name");
+                    other.transform.position = this.transform.position;
+                    other.transform.SetParent(this.transform);
+                    ItemName = other.transform.name;
 
-                //�����}�X�ڂ̃A�C�e���̏���
-                int horizontalSize = other.GetComponent<Items>().HorizontalItemSize;
-                int verticalSize = other.GetComponent<Items>().VerticalItemSize;
-                if (RelatedSlots(verticalSize, horizontalSize) != null)
-                {
-                    List<Transform> TGTs = RelatedSlots(verticalSize, horizontalSize);
-                    foreach (Transform TGT in TGTs)
+                    //�����}�X�ڂ̃A�C�e���̏���
+                    int horizontalSize = other.GetComponent<Items>().HorizontalItemSize;
+                    int verticalSize = other.GetComponent<Items>().VerticalItemSize;
+                    if (RelatedSlots(verticalSize, horizontalSize) != null)
                     {
-                        TGT.GetComponent<SlotManager>().storing = true;
+                        List<Transform> TGTs = RelatedSlots(verticalSize, horizontalSize);
+                        foreach (Transform TGT in TGTs)
+                        {
+                            TGT.GetComponent<SlotManager>().storing = true;
+                        }
                     }
-                }
-                else
-                {
-                    other.GetComponent<Items>().BackPosition();
-                    Debug.Log("このスロットにアイテムを格納できません:Code02");
+                    else
+                    {
+                        other.GetComponent<Items>().BackPosition();
+                        Debug.Log("このスロットにアイテムを格納できません:Code02");
+                    }
                 }
             }
 
@@ -80,6 +84,7 @@ public class SlotManager : MonoBehaviour
 
             else if (storing == false && ItemName == other.transform.name)//�A�C�e����]���̋���
             {
+                Debug.Log("storing == false && ItemName == other.transform.name");
                 other.transform.position = this.transform.position;
                 other.transform.SetParent(this.transform);
                 ItemName = other.transform.name;
