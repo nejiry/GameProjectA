@@ -13,7 +13,6 @@ public class SlotManager : MonoBehaviour
         {
             if (storing == false && ItemName == "")
             {
-                Debug.Log("storing == false && ItemName == ,");
                 other.transform.SetParent(this.transform);
 
                 Vector3 ItemTransform = this.transform.position;
@@ -30,7 +29,7 @@ public class SlotManager : MonoBehaviour
                     foreach (Transform TGT in TGTs)
                     {
                         bool ItemStoring = TGT.GetComponent<SlotManager>().storing;
-                        if (ItemStoring == true)
+                        if (ItemStoring == true)/////////改良箇所/////////////////////////////
                         {
                             other.GetComponent<Items>().BackPosition();
                             Debug.Log("格納スロットにほかのアイテムが既にあります:Code01");
@@ -51,8 +50,6 @@ public class SlotManager : MonoBehaviour
             else if (storing == true && ItemName == other.transform.name)//�A�C�e�������ɓ����Ă��ē����A�C�e���Ȃ�
             {
                 
-                if(other.GetComponent<Items>().ItemSet != true){
-                    Debug.Log("storing == true && ItemName == other.transform.name");
                     other.transform.position = this.transform.position;
                     other.transform.SetParent(this.transform);
                     ItemName = other.transform.name;
@@ -73,7 +70,7 @@ public class SlotManager : MonoBehaviour
                         other.GetComponent<Items>().BackPosition();
                         Debug.Log("このスロットにアイテムを格納できません:Code02");
                     }
-                }
+                
             }
 
             else if (storing == true && ItemName == "")//�i�[���ŃA�C�e���l�[�������i�����X���b�g�A�C�e���͈͓̔��̃X���b�g�j
@@ -84,7 +81,6 @@ public class SlotManager : MonoBehaviour
 
             else if (storing == false && ItemName == other.transform.name)//�A�C�e����]���̋���
             {
-                Debug.Log("storing == false && ItemName == other.transform.name");
                 other.transform.position = this.transform.position;
                 other.transform.SetParent(this.transform);
                 ItemName = other.transform.name;

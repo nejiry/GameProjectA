@@ -8,10 +8,20 @@ namespace Cainos.PixelArtTopDown_Basic{
 
         public bool isClosed = true;
         public Sprite openImage;
+        public Sprite closeImage;
 
         public void UseAnyObject(){
-            bool isClosed = false;
-            GetComponent<SpriteRenderer>().sprite = openImage;
+            BoxCollider2D collider = GetComponent<BoxCollider2D>();
+            if(isClosed){
+                isClosed = false;
+                GetComponent<SpriteRenderer>().sprite = openImage;
+                collider.enabled = false;
+            }
+            else if(isClosed == false){
+                isClosed = true;
+                GetComponent<SpriteRenderer>().sprite = closeImage;
+                collider.enabled = true;
+            }
         }
     }
 }

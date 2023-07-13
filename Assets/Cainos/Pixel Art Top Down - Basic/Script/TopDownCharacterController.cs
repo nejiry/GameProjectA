@@ -63,12 +63,12 @@ namespace Cainos.PixelArtTopDown_Basic
                 }
                 else{
                     UIMenuBool.SetActive(true);
-                    if(interactObject){
+                    if(interactCreat){
                         RightPanel.SetActive(true);
-                        if(interactObject.tag == "ItemCreat"){
-                            if(interactObject.GetComponent<Creat>().isClosed){
+                        if(interactCreat.tag == "ItemCreat"){
+                            if(interactCreat.GetComponent<Creat>().isClosed){
                                 GenerateInBox();
-                                interactObject.GetComponent<Creat>().isClosed = false;
+                                interactCreat.GetComponent<Creat>().isClosed = false;
                             }
                             else{
                                 return;//セーブデータからアイテム読み込み
